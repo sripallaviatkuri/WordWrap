@@ -11,8 +11,6 @@ public class Wordwrap {
 		System.out.println(wrap("Hello Sri. How I am doing? How is everything", 4));
 	}
 
-	
-
 	public static String wrap(String text, int maxLineLength) {
 
 		// checking if the input passed is null or empty. If the input passed is empty/null we are throwing IllegalArgument Exception
@@ -24,6 +22,14 @@ public class Wordwrap {
 
 					throw new IllegalArgumentException("invalid LineLength");
 
+				}
+				// Splitting the input String on the delimiter 'space' and storing the tokens of strings in String tokens array.
+				String[] tokens = text.split("\\s");
+				System.out.println(tokens.length);
+
+				// if there is only one Word passed, return the Word
+				if (tokens.length == 1) {
+					return text;
 				}
 
 }
