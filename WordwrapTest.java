@@ -32,4 +32,32 @@ class WordwrapTest {
 				() -> Wordwrap.wrap("hello", 0));
 		assertEquals("invalid LineLength", exception.getMessage());
 	}
+
+	// Tests with positive test cases
+	@Test
+	void testTextWithOneWord() {
+		assertEquals("hello", Wordwrap.wrap("hello", 12));
+	}
+
+	@Test
+	void testForWordLengthGreaterThanMaxLength() {
+		assertEquals("hello \nsri ", Wordwrap.wrap("hello sri", 4));
+	}
+
+	@Test
+	void testTextWithSpecialCharacters() {
+		assertEquals("hi \nsri! ", Wordwrap.wrap("hi sri!", 4));
+	}
+
+	@Test
+	void testTextWithMultipleWords() {
+		assertEquals("Hello \nSri. \nHow \nare \nyou \ndoing? \nHow \nis \neverything ",
+				Wordwrap.wrap("Hello Sri. How are you doing? How is everything", 4));
+	}
+
+	@Test
+	void testSingleWordLengthGreaterThanMaxLength() {
+		assertEquals("HelloHowAreYou", Wordwrap.wrap("HelloHowAreYou", 4));
+
+	}
 }
